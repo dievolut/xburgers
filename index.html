@@ -6,14 +6,14 @@
   <title>X BURGER</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
     }
 
     .zoom-header {
-      animation: zoomIn 3s ease-in-out forwards;
+      animation: zoomIn 2s ease-in-out forwards;
     }
 
     @keyframes zoomIn {
@@ -26,38 +26,50 @@
         opacity: 1;
       }
     }
+
+    /* Opcional: scroll “a lo presentación” */
+    section {
+      scroll-snap-align: start;
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y: scroll;
+    }
   </style>
 </head>
-<body class="overflow-auto bg-black text-white">
+<body class="bg-black text-white overflow-hidden">
 
-  <!-- Header con zoom -->
-  <header class="zoom-header text-center py-6 text-4xl font-bold bg-red-600">
-    ¡Bienvenido a X BURGER!
-  </header>
+  <!-- Contenedor de scroll seccionado -->
+  <main>
+    <!-- Imagen a pantalla completa -->
+    <section class="h-screen w-screen">
+      <img 
+        src="BURGER-LANDING.jpg" 
+        alt="X Burger Combos Infernal" 
+        class="w-full h-full object-cover"
+      />
+    </section>
 
-  <!-- Imagen a pantalla completa -->
-  <section class="w-screen h-screen">
-    <img 
-      src="BURGER-LANDING.jpg" 
-      alt="X Burger Combos Infernal" 
-      class="w-full h-full object-cover"
-    />
-  </section>
+    <!-- Sección con iframe -->
+    <section class="h-screen w-screen bg-white">
+      <iframe 
+        src="https://menu-mex.vercel.app" 
+        width="100%" 
+        height="100%"
+        class="border-none"
+      ></iframe>
+    </section>
 
-  <!-- Iframe con scroll permitido -->
-  <section class="w-full">
-    <iframe 
-      src="https://menu-mex.vercel.app" 
-      width="100%" 
-      height="600"
-      class="border-none"
-    ></iframe>
-  </section>
+    <!-- Footer -->
+    <section class="h-screen w-screen bg-gray-900 flex items-center justify-center">
+      <footer class="text-center text-sm text-white">
+        © 2025 X BURGER. Todos los derechos reservados.
+      </footer>
+    </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-4 bg-gray-900 text-sm">
-    © 2025 X BURGER. Todos los derechos reservados.
-  </footer>
+  </main>
 
 </body>
 </html>
