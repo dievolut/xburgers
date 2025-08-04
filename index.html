@@ -1,25 +1,58 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>X BURGER</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    .zoom-header {
+      animation: zoomIn 2s ease-in-out forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Opcional: scroll “a lo presentación” */
+    section {
+      scroll-snap-align: start;
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+  </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white overflow-hidden">
 
-  <main class="scroll-snap-type-y mandatory overflow-y-scroll h-screen">
-
-    <!-- Imagen con altura real de 1600px -->
-    <section class="w-screen" style="height: 1600px;">
+  <!-- Contenedor de scroll seccionado -->
+  <main>
+    <!-- Imagen a pantalla completa -->
+    <section class="h-screen w-screen">
       <img 
         src="BURGER-LANDING.jpg" 
         alt="X Burger Combos Infernal" 
-        class="w-full h-full object-contain"
+        class="w-full h-full object-cover"
       />
     </section>
 
-    <!-- Sección del menú -->
+    <!-- Sección con iframe -->
     <section class="h-screen w-screen bg-white">
       <iframe 
         src="https://menu-mex.vercel.app" 
@@ -29,8 +62,14 @@
       ></iframe>
     </section>
 
+    <!-- Footer -->
+    <section class="h-screen w-screen bg-gray-900 flex items-center justify-center">
+      <footer class="text-center text-sm text-white">
+        © 2025 X BURGER. Todos los derechos reservados.
+      </footer>
+    </section>
+
   </main>
 
 </body>
 </html>
-
